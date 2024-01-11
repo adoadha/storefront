@@ -2,11 +2,9 @@
 
 import { AxiosError } from "axios";
 import { Form, Formik } from "formik";
-import Image from "next/image";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
-import * as React from "react";
 import * as Yup from "yup";
 
 import { Button } from "@/components/ui/button";
@@ -35,12 +33,16 @@ const LoginPage = () => {
 
   const handleSubmit = async (value: { email: string; password: string }) => {
     try {
+      console.log(value.email, "VALUE");
+      console.log(value.password, "VALUE");
       const res = await signIn("login-credentials", {
         redirect: false,
         email: value.email,
         password: value.password,
         callbackUrl: "/dashboard",
       });
+
+      console.log(res);
 
       if (!res?.error) {
         router.push("/dashboard");
@@ -66,9 +68,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="w-full flex h-screen bg-slate-200">
+    <div className="flex w-full h-screen bg-slate-200">
       <div className="flex-1 ">Banner Place</div>
-      <div className="flex-1 flex ">
+      <div className="flex flex-1 ">
         <div className=" w-[32rem] m-auto items-center">
           <Card>
             <CardContent className="p-10">
@@ -134,14 +136,14 @@ const LoginPage = () => {
                         </FormMessage>
                         <Link
                           href="/"
-                          className="text-right text-sm text-primary underline"
+                          className="text-sm text-right underline text-primary"
                         >
                           Lupa kata sandi
                         </Link>
                       </div>
                     </FormItem>
                     <Button
-                      className="mt-8 w-full"
+                      className="w-full mt-8"
                       disabled={isSubmitting}
                       // isLoading={isSubmitting}
                     >
