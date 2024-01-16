@@ -22,19 +22,13 @@ export const SidebarMenu = [
     subMenu: [
       {
         label: "Category",
-        path: "/product",
+        path: "dashboard/product/category",
         icon: PuzzleIcon,
         active: "product",
       },
       {
         label: "Stock",
-        path: "/product",
-        icon: PuzzleIcon,
-        active: "product",
-      },
-      {
-        label: "Variant",
-        path: "/product",
+        path: "dashboard/product/stock",
         icon: PuzzleIcon,
         active: "product",
       },
@@ -44,41 +38,27 @@ export const SidebarMenu = [
     label: "Pesanan",
     path: "dashboard/pesanan",
     icon: ShoppingCartIcon,
-    active: "pesanan",
-    subMenu: [
-      {
-        label: "Transaksi Harian",
-        path: "/dashboard/daily",
-        icon: ShoppingCartIcon,
-        active: "daily",
-      },
-      {
-        label: "Pesanan Online",
-        path: "/dashboard/online",
-        icon: ShoppingCartIcon,
-        active: "product",
-      },
-    ],
+    active: "dashboard/pesanan",
   },
   {
     label: "Keuangan",
     path: "dashboard/finance",
     icon: BanknotesIcon,
-    active: "finance",
+    active: "dashboard/finance",
     subMenu: [
       {
         label: "Hutang",
-        path: "/dashboard/hutang",
+        path: "dashboard/hutang",
         icon: PuzzleIcon,
         active: "product",
       },
     ],
   },
   {
-    label: "Pengguna",
-    path: "/dashboard/settings",
+    label: "Laporan",
+    path: "dashboard/report",
     icon: UsersIcon,
-    active: "dashboard/pengaturan",
+    active: "dashboard/report",
   },
   {
     label: "Pengaturan",

@@ -1,11 +1,22 @@
 "use client";
 import { SidebarMenu } from "@/constant/SidebarMenu";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import * as React from "react";
 import ThreeBulletIcon from "../icons/ThreeBulletIcon";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const Dashboard = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
@@ -14,9 +25,29 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
     <div className="flex flex-row w-screen min-h-screen">
       {/* header menu */}
       <div className="fixed flex h-[60px] abosolute bg-white w-full ">
-        <div className="flex items-center ml-10 gap-x-5">
-          <ThreeBulletIcon className="w-5 h-5" />
-          <Image src="/doaibu.png" alt="" width="110" height="90" />
+        <div className="flex justify-between w-full px-10">
+          <div className="flex items-center gap-x-5">
+            <ThreeBulletIcon className="w-5 h-5" />
+            <Image src="/doaibu.png" alt="" width="110" height="90" />
+          </div>
+          <div className="flex justify-end mx-2">
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <div className="flex items-center gap-x-1">
+                  <Avatar className="h-7 w-7">
+                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <ChevronDownIcon className="w-6 h-6" />
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Logout</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
       </div>
 
@@ -29,7 +60,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                 href={value.path}
                 key={index}
                 className={cn({
-                  "bg-blue-50": pathname.split("/")[1] == value.active,
+                  "bg-blue-50": pathname.split("/dashboard")[1] == value.active,
                 })}
               >
                 <div className="flex flex-row items-center justify-start p-4 rounded-lg ">
@@ -39,7 +70,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                   </span>
                 </div>
               </Link>
-              {pathname.split("/")[1] == "/product"
+              {pathname.split("/")[1] == "dashboard"
                 ? value.subMenu &&
                   value.subMenu.map((subvalue, indexsub) => (
                     <Link href={subvalue.path} key={indexsub} className="">

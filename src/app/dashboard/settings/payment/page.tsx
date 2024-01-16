@@ -29,30 +29,28 @@ const TabsTheme: DeepPartial<FlowbiteTabTheme> = {
 
 const SettingsPayment = () => {
   return (
-    <Dashboard>
-      <div className="w-full">
-        <div className="flex-col my-3">
-          <h1 className="text-[30px] text-nile-blue">Pembayaran</h1>
-          <p className="text-[14px] text-gravel font-semibold">
-            kelola channel pembayaran, mutasi saldo dan penarikan toko doa ibumu
-          </p>
-        </div>
-        <div className="my-5">
-          <Tabs.Group aria-label="Pills" style="pills" theme={TabsTheme}>
-            <Tabs.Item active={true} title="Channel Pembayaran">
-              <TabsPayment />
-            </Tabs.Item>
-            <Tabs.Item title="Saldo">
-              <TabsBalance />
-            </Tabs.Item>
-            <Tabs.Item title="Mutasi Saldo">
-              <TabsMutasi />
-            </Tabs.Item>
-            <Tabs.Item title="Settings"></Tabs.Item>
-          </Tabs.Group>
-        </div>
+    <div className="w-full">
+      <div className="flex-col my-3">
+        <h1 className="text-[30px] text-nile-blue">Pembayaran</h1>
+        <p className="text-[14px] text-gravel font-semibold">
+          kelola channel pembayaran, mutasi saldo dan penarikan toko doa ibumu
+        </p>
       </div>
-    </Dashboard>
+      <div className="my-5">
+        <Tabs.Group aria-label="Pills" style="pills" theme={TabsTheme}>
+          <Tabs.Item active={true} title="Channel Pembayaran">
+            <TabsPayment />
+          </Tabs.Item>
+          <Tabs.Item title="Saldo">
+            <TabsBalance />
+          </Tabs.Item>
+          <Tabs.Item title="Mutasi Saldo">
+            <TabsMutasi />
+          </Tabs.Item>
+          <Tabs.Item title="Settings"></Tabs.Item>
+        </Tabs.Group>
+      </div>
+    </div>
   );
 };
 
