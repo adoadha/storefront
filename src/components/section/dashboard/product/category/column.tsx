@@ -14,9 +14,8 @@ export const columnCategory: ColumnDef<ICategory>[] = [
   {
     id: "id",
     accessorKey: "id",
-    size: 20,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="No" className="w-[250px]" />
+      <DataTableColumnHeader column={column} title="No" />
     ),
     ...propsColumns,
   },

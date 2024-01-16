@@ -11,15 +11,18 @@ const apiInstance = axios.create({
 
 apiInstance.interceptors.request.use(
   async (config) => {
-    const session = await getSession();
-    if (session?.token) {
-      config.headers.Authorization = `Bearer ${session.token}`;
+    try {
+      const session = await getSession();
+      if (session?.token) {
+        config.headers.Authorization = `Bearer ${session.token}`;
+      }
+      return config;
+    } catch (error) {
+      return Promise.reject(error);
     }
-    return config;
   },
   (error) => {
     return Promise.reject(error);
   }
 );
-
 export default apiInstance;

@@ -132,7 +132,7 @@ const CardAddCategory = () => {
             <div className="">
               <h2 className="text-sm">Photo</h2>
               <div className="flex w-[60px] items-center justify-center rounded-md bg-slate-100 aspect-square border border-slate-200">
-                <PhotoIcon className="w-5 h-5  text-slate-500" />
+                <PhotoIcon className="w-5 h-5 text-slate-500" />
               </div>
             </div>
             <Button
@@ -140,7 +140,7 @@ const CardAddCategory = () => {
               disabled={isSubmitting}
               // isLoading={isSubmitting}
             >
-              Login
+              Tambah Kategori
             </Button>
           </Form>
         )}

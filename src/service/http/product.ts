@@ -2,6 +2,7 @@ import { ICategory } from "@/types/product";
 import { QueryFunctionContext } from "@tanstack/react-query";
 import apiInstance from "./api-instance";
 import { BaseResponse } from "@/types";
+import { AxiosResponse } from "axios";
 
 export const addCategory = async ({
   queryKey,
