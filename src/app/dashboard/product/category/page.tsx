@@ -1,63 +1,21 @@
+"use client";
 import { Card } from "@/components/ui/card";
-import React from "react";
 
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-
-const invoices = [
-  {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
-  },
-];
+import CardAddCategory from "@/components/section/dashboard/product/category/CardAddCategory";
+import { useQuery } from "@tanstack/react-query";
+import { getCategory } from "@/service/http/product";
+import TableCategory from "@/components/section/dashboard/product/category/table-category";
 
 const CategoryPage = () => {
+  // const queryGetCategory = useQuery( quer["getCategory"], getCategory);
+
+  const queryGetCategory = useQuery({
+    queryKey: ["getCategory", {}],
+    queryFn: getCategory,
+  });
+
+  console.log(JSON.stringify(queryGetCategory));
+
   return (
     <div className="w-full">
       <h1 className="text-[25px] text-[#163A50] my-2">Category Product</h1>
@@ -65,10 +23,11 @@ const CategoryPage = () => {
         <div className="flex w-[32rem]">
           <Card className="w-full">
             <div className="flex flex-col mx-2">
-              <h1>Add Category</h1>
-
+              <h2 className="font-semibold text-md text-[#163A50] my-5">
+                Add Category
+              </h2>
               <div className="">
-                <input type="text" />
+                <CardAddCategory />
               </div>
             </div>
           </Card>
@@ -76,38 +35,13 @@ const CategoryPage = () => {
         <div className="w-full">
           <Card className="w-full">
             <div className="">
-              <Table>
-                <TableHeader className="bg-slate-100">
-                  <TableRow>
-                    <TableHead className="w-[100px]">Invoice</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Method</TableHead>
-                    <TableHead className="text-right">Amount</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {invoices.map((invoice) => (
-                    <TableRow key={invoice.invoice}>
-                      <TableCell className="font-medium">
-                        {invoice.invoice}
-                      </TableCell>
-                      <TableCell>{invoice.paymentStatus}</TableCell>
-                      <TableCell>{invoice.paymentMethod}</TableCell>
-                      <TableCell className="text-right">
-                        {invoice.totalAmount}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-                <TableFooter>
-                  <TableRow>
-                    <TableCell colSpan={3}>Total</TableCell>
-                    <TableCell className="text-right">$2,500.00</TableCell>
-                  </TableRow>
-                </TableFooter>
-              </Table>
+              <TableCategory
+                data={queryGetCategory.data?.data || []}
+                isLoading={queryGetCategory.isLoading}
+              />
             </div>
           </Card>
+          {JSON.stringify(queryGetCategory.data?.data)}
         </div>
       </div>
     </div>

@@ -15,12 +15,5 @@ async function getData(): Promise<Payment[]> {
 }
 
 export default async function DemoPage() {
-  const data = await getData();
-
-  return (
-    <div className="container py-10 mx-auto">
-      <DataTable columns={columns} data={data} />
-      adi
-    </div>
-  );
+  return <div className="container py-10 mx-auto">adi</div>;
 }
