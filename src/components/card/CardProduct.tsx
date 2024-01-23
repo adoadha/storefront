@@ -15,8 +15,13 @@ const CardProduct = ({ data, isLoading }: CardProductProps) => {
   if (isLoading) {
     return (
       <>
-        <Skeleton className="h-32 bg-slate-600 rounded-[15px]" />
-        <Skeleton className="h-32 bg-slate-600 rounded-[15px]" />
+        <div className="flex flex-wrap gap-3">
+          <Skeleton className="w-[200px] h-[250px] border border-[#DEDEDE]  bg-slate-100 rounded-none" />
+          <Skeleton className="w-[200px] h-[250px] border border-[#DEDEDE]  bg-slate-100 rounded-none" />
+          <Skeleton className="w-[200px] h-[250px] border border-[#DEDEDE]  bg-slate-100 rounded-none " />
+          <Skeleton className="w-[200px] h-[250px] border border-[#DEDEDE]  bg-slate-100 rounded-none" />
+          <Skeleton className="w-[200px] h-[250px] border border-[#DEDEDE]  bg-slate-100 rounded-none" />
+        </div>
       </>
     );
   }
@@ -24,7 +29,7 @@ const CardProduct = ({ data, isLoading }: CardProductProps) => {
     <div className="flex flex-wrap gap-3">
       {data.map((value) => (
         <div
-          className="w-[200px] h-[250px] border bprder-[#DEDEDE]  flex flex-col"
+          className="w-[200px] h-[250px] border border-[#DEDEDE]  flex flex-col"
           key={value.id}
         >
           <div className="flex items-center justify-between mx-2 my-2">
@@ -37,7 +42,7 @@ const CardProduct = ({ data, isLoading }: CardProductProps) => {
             <EllipsisVerticalIcon className="w-5 h-5" />
           </div>
           <div className="flex justify-center my-3">
-            <Link href={`/product/${value.id}/${value.title}`}>
+            <Link href={`dashboard/product/${value.id}/${value.title}`}>
               <Image height="180" width="150" src="/sendal.png" alt="" />
             </Link>
           </div>
