@@ -1,16 +1,18 @@
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ProductType } from "@/interfaces/product";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
+import { IProduct } from "@/interfaces/product";
+import TableVariations from "../section/dashboard/product/product/table-variations";
 
 interface DetailProductScreenProps {
-  product: ProductType;
+  data?: IProduct;
+  isLoading?: boolean;
 }
 
-const DetailProductScreen = ({ product }: DetailProductScreenProps) => {
+const DetailProductScreen = ({ data, isLoading }: DetailProductScreenProps) => {
   return (
     <>
       <ol
@@ -94,15 +96,11 @@ const DetailProductScreen = ({ product }: DetailProductScreenProps) => {
         <li
           className="inline-flex items-center text-sm font-semibold text-gray-500 truncate dark:text-gray-200"
           aria-current="page"
-        >
-          {product.title}
-        </li>
+        ></li>
       </ol>
       <Card className="my-5 ">
         <div className="flex justify-between">
-          <h1 className="mx-5 my-2 text-2xl font-semibold">
-            Produk - {product.title}
-          </h1>
+          <h1 className="mx-5 my-2 text-2xl font-semibold">Produk -</h1>
           <div className="flex items-center mx-2 gap-x-1">
             <Button>Edit</Button>
             <Separator orientation="vertical" className="space-y-1" />
@@ -148,16 +146,23 @@ const DetailProductScreen = ({ product }: DetailProductScreenProps) => {
               </div>
             </div>
           </div>
-          <div className="">
-            <Tabs defaultValue="account" className="w-[400px]">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="account">Account</TabsTrigger>
-                <TabsTrigger value="password">Password</TabsTrigger>
-              </TabsList>
-              <TabsContent value="account">ado</TabsContent>
-              <TabsContent value="password">ado</TabsContent>
-            </Tabs>
-          </div>
+        </div>
+        <div className="flex items-start justify-start">
+          <Tabs defaultValue="detail" className="">
+            <TabsList className="flex items-start bg-white gap-x-5">
+              <TabsTrigger value="detail">Detail Produk</TabsTrigger>
+              <TabsTrigger value="variasi">Variasi</TabsTrigger>
+              <TabsTrigger value="harga">Harga Produk</TabsTrigger>
+            </TabsList>
+            <TabsContent value="detail">
+              Sediain bagian untuk detail product seperti create at, product
+              gallery, qr code
+            </TabsContent>
+            <TabsContent value="variasi">
+              {/* <TableVariations /> */}
+            </TabsContent>
+            <TabsContent value="harga">ado</TabsContent>
+          </Tabs>
         </div>
       </Card>
     </>

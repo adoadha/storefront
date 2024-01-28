@@ -1,4 +1,4 @@
-import { ProductType } from "@/interfaces/product";
+import { IProduct, ProductType } from "@/interfaces/product";
 import React from "react";
 import {
   Table,
@@ -11,7 +11,7 @@ import {
 import { Skeleton } from "../ui/skeleton";
 
 interface CardListProductProps {
-  data?: ProductType[];
+  data?: IProduct[];
   isLoading?: boolean;
 }
 
@@ -39,9 +39,9 @@ const CardListProduct = ({ data, isLoading }: CardListProductProps) => {
           {data?.map((value) => (
             <TableRow key={value.id}>
               <TableCell className="font-medium">{value.id}</TableCell>
-              <TableCell>{value.title}</TableCell>
-              <TableCell>{value.price}</TableCell>
-              <TableCell className="">{value.category}</TableCell>
+              <TableCell>{value.product_name}</TableCell>
+              <TableCell>{value.description}</TableCell>
+              <TableCell className="">{value.description}</TableCell>
             </TableRow>
           ))}
         </TableBody>

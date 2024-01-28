@@ -1,8 +1,8 @@
+import { BaseResponse } from "@/types";
 import { ICategory } from "@/types/product";
 import { QueryFunctionContext } from "@tanstack/react-query";
 import apiInstance from "./api-instance";
-import { BaseResponse } from "@/types";
-import { AxiosResponse } from "axios";
+import { IALLProduct, IProduct } from "@/interfaces/product";
 
 export const addCategory = async ({
   queryKey,
@@ -22,7 +22,28 @@ export const getCategory = async ({
   const [, params] = queryKey;
   const response = await apiInstance.get("/product/category", { params });
 
-  console.log(response.data, "HOLA");
+  return response.data;
+};
 
+export const getProducts = async ({
+  queryKey,
+}: QueryFunctionContext): Promise<BaseResponse<IALLProduct[]>> => {
+  const [, params] = queryKey;
+  // perbaiki interface dan bedakan karena ini query nya akan di set berbeda
+  const response = await apiInstance.get("/product", { params });
+
+  return response.data;
+};
+
+export const getProductById = async ({
+  queryKey,
+}: QueryFunctionContext): Promise<BaseResponse<IProduct>> => {
+  const [, ProductId] = queryKey;
+
+  const response = await apiInstance.get<BaseResponse<IProduct>>(
+    `/product/${ProductId}`
+  );
+
+  console.log(response.data, "service response");
   return response.data;
 };
