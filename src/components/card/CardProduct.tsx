@@ -46,9 +46,7 @@ const CardProduct = ({ data, isLoading }: CardProductProps) => {
             <EllipsisVerticalIcon className="w-5 h-5" />
           </div>
           <div className="flex justify-center my-3">
-            <Link
-              href={`/dashboard/product/${value.product_id}/${value.product_name}`}
-            >
+            <Link href={`/dashboard/product/${value.product_id}`}>
               <Image height="180" width="150" src="/sendal.png" alt="" />
             </Link>
           </div>

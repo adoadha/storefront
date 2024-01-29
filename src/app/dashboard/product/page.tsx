@@ -5,6 +5,7 @@ import CardListProduct from "@/components/card/CardListProduct";
 import CardProduct from "@/components/card/CardProduct";
 import InputText from "@/components/form/InputText";
 import BoxIcon from "@/components/icons/BoxIcon";
+import { Toggle } from "@/components/ui/toggle";
 import { getProducts } from "@/service/http/product";
 import { Bars4Icon, PlusIcon } from "@heroicons/react/24/outline";
 import { useQuery } from "@tanstack/react-query";
@@ -52,6 +53,7 @@ const AllProduct = () => {
               >
                 <BoxIcon className="w-5 h-5" />
               </button>
+
               <button
                 className="px-2 py-2 bg-slate-300 rounded-r-xl"
                 onClick={() => setToogle("list")}

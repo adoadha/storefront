@@ -10,24 +10,11 @@ const propsColumns = {
   enableHiding: false,
 };
 
-export const columnVariations: ColumnDef<IVariationProduct>[] = [
+export const columnPrice: ColumnDef<IVariationProduct>[] = [
   {
     id: "id",
     accessorKey: "id",
     header: ({ column }) => <DataTableColumnHeader column={column} title="" />,
-    ...propsColumns,
-  },
-  {
-    id: "variation_name",
-    accessorKey: "variation_name",
-    header: ({ column }) => (
-      <DataTableColumnHeader
-        column={column}
-        title="Nama Variasi"
-        className="uppercase"
-      />
-    ),
-    size: 100,
     ...propsColumns,
   },
   {
@@ -44,26 +31,40 @@ export const columnVariations: ColumnDef<IVariationProduct>[] = [
     ...propsColumns,
   },
   {
-    id: "variation_stock",
-    accessorKey: "variation_stock",
+    id: "HPP",
+    accessorKey: "HPP",
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title="stok produk"
         className="uppercase"
+        title="HPP"
+      />
+    ),
+    size: 60,
+    ...propsColumns,
+  },
+
+  {
+    id: "grosir_price",
+    accessorKey: "grosir_price",
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        className="uppercase"
+        title="Harga grosir / renceng"
       />
     ),
     size: 60,
     ...propsColumns,
   },
   {
-    id: "image_url",
-    accessorKey: "image_url",
+    id: "price",
+    accessorKey: "price",
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
+        title="Harga"
         className="uppercase"
-        title="Foto Product"
       />
     ),
     size: 60,

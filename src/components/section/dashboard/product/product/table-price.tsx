@@ -3,16 +3,14 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { IVariationProduct } from "@/interfaces/product";
 import React from "react";
 import { columnVariations } from "./column";
+import { columnPrice } from "./column-price";
 
-type TableVariationsProps = {
+type TablePriceProps = {
   data: IVariationProduct[];
   isLoading?: boolean;
 };
 
-export default function TableVariations({
-  data,
-  isLoading,
-}: TableVariationsProps) {
+export default function TablePrice({ data, isLoading }: TablePriceProps) {
   const tableData = React.useMemo(
     () => (isLoading ? Array(4).fill({}) : data),
     [isLoading, data]
@@ -21,13 +19,13 @@ export default function TableVariations({
   const columnsMemo = React.useMemo(
     () =>
       isLoading
-        ? columnVariations.map((column) => ({
+        ? columnPrice.map((column) => ({
             ...column,
             cell() {
               return <Skeleton className="w-full h-4" />;
             },
           }))
-        : columnVariations,
+        : columnPrice,
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [isLoading, columnVariations]
   );

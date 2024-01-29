@@ -6,9 +6,10 @@ import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 import { IProduct } from "@/interfaces/product";
 import TableVariations from "../section/dashboard/product/product/table-variations";
+import TablePrice from "../section/dashboard/product/product/table-price";
 
 interface DetailProductScreenProps {
-  data?: IProduct;
+  data: IProduct;
   isLoading?: boolean;
 }
 
@@ -96,11 +97,15 @@ const DetailProductScreen = ({ data, isLoading }: DetailProductScreenProps) => {
         <li
           className="inline-flex items-center text-sm font-semibold text-gray-500 truncate dark:text-gray-200"
           aria-current="page"
-        ></li>
+        >
+          {data?.product_name}
+        </li>
       </ol>
       <Card className="my-5 ">
         <div className="flex justify-between">
-          <h1 className="mx-5 my-2 text-2xl font-semibold">Produk -</h1>
+          <h1 className="mx-5 my-2 text-2xl font-semibold">
+            Produk - {data?.product_name}
+          </h1>
           <div className="flex items-center mx-2 gap-x-1">
             <Button>Edit</Button>
             <Separator orientation="vertical" className="space-y-1" />
@@ -131,7 +136,7 @@ const DetailProductScreen = ({ data, isLoading }: DetailProductScreenProps) => {
                 <div className="flex gap-x-11 ">
                   <div className="flex flex-col">
                     <h1 className="text-sm text-slate-400">Kategori</h1>
-                    <h1 className="text-sm">Gudang Mesiu</h1>
+                    <h1 className="text-sm">{data?.category_name}</h1>
                   </div>
                   <div className="flex flex-col">
                     <h1 className="text-sm text-slate-400">Tipe Product</h1>
@@ -141,27 +146,37 @@ const DetailProductScreen = ({ data, isLoading }: DetailProductScreenProps) => {
 
                 <div className="flex flex-col my-3">
                   <h1 className="text-sm text-slate-400">Description</h1>
-                  <h1 className="text-sm">Gudang Mesiu</h1>
+                  <h1 className="text-sm">{data?.description}</h1>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex items-start justify-start">
-          <Tabs defaultValue="detail" className="">
-            <TabsList className="flex items-start bg-white gap-x-5">
+        <div className="flex mx-2">
+          <Tabs defaultValue="detail" className="w-full">
+            <TabsList className="flex justify-start w-1/3 px-4 gap-x-5">
               <TabsTrigger value="detail">Detail Produk</TabsTrigger>
               <TabsTrigger value="variasi">Variasi</TabsTrigger>
               <TabsTrigger value="harga">Harga Produk</TabsTrigger>
             </TabsList>
-            <TabsContent value="detail">
-              Sediain bagian untuk detail product seperti create at, product
-              gallery, qr code
-            </TabsContent>
-            <TabsContent value="variasi">
-              {/* <TableVariations /> */}
-            </TabsContent>
-            <TabsContent value="harga">ado</TabsContent>
+            <div className="w-full">
+              <TabsContent value="detail">
+                Sediain bagian untuk detail product seperti create at, product
+                gallery, qr code
+              </TabsContent>
+              <TabsContent value="variasi" className="w-full px-5 py-5">
+                <TableVariations
+                  data={data?.variation_values}
+                  isLoading={isLoading}
+                />
+              </TabsContent>
+              <TabsContent value="harga" className="w-2/3 px-5 py-5">
+                <TablePrice
+                  data={data?.variation_values}
+                  isLoading={isLoading}
+                />
+              </TabsContent>
+            </div>
           </Tabs>
         </div>
       </Card>
