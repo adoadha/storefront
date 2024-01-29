@@ -1,6 +1,7 @@
 import QueryWrapper from "@/components/commons/QueryWrapper";
 import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
+import Provider from "./provider";
 
 const nunito_Sans = Nunito_Sans({ subsets: ["latin"] });
 
@@ -17,7 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nunito_Sans.className}>
-        <QueryWrapper>{children}</QueryWrapper>
+        {/* <QueryWrapper></QueryWrapper> */}
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

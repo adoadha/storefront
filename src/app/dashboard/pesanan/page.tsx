@@ -1,28 +1,19 @@
-import CardBase from "@/components/card/CardBase";
-import NavHead from "@/components/commons/Navbar";
-import UpStatisticsIcon from "@/components/icons/UpStatisticsIcon";
-import React from "react";
+import { Payment, columns } from "./column";
+import { DataTable } from "./data-table";
 
-const page = () => {
-  return (
-    <>
-      <NavHead />
-      <div className="w-full bg-[#F1F9FF]">
-        <div className="grid grid-cols-3 gap-3">
-          <CardBase>
-            <div className="flex-col">
-              <h1 className="text-[14px] text-gravel ">Total Sales </h1>
-              <div className="flex items-baseline">
-                <h1 className="text-[35px] font-semibold text-gravel">1000</h1>
-                <UpStatisticsIcon className="w-3 h-3 ml-2" />
-                <span className="text-sm text-[#5A9B1A]">20%</span>
-              </div>
-            </div>
-          </CardBase>
-        </div>
-      </div>
-    </>
-  );
-};
+async function getData(): Promise<Payment[]> {
+  // Fetch data from your API here.
+  return [
+    {
+      id: "728ed52f",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com",
+    },
+    // ...
+  ];
+}
 
-export default page;
+export default async function DemoPage() {
+  return <div className="container py-10 mx-auto">adi</div>;
+}

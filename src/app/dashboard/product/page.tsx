@@ -4,26 +4,19 @@ import CardBase from "@/components/card/CardBase";
 import CardListProduct from "@/components/card/CardListProduct";
 import CardProduct from "@/components/card/CardProduct";
 import InputText from "@/components/form/InputText";
-import Dashboard from "@/components/layout/Dashboard";
-import { Bars4Icon, PlusIcon } from "@heroicons/react/24/outline";
-import React, { useState } from "react";
-import axios from "axios";
-import { ProductType } from "@/interfaces/product";
-import { useQuery } from "@tanstack/react-query";
 import BoxIcon from "@/components/icons/BoxIcon";
-
-const getProduct = async () => {
-  const result = await axios.get("https://fakestoreapi.com/products");
-
-  return result.data as ProductType[];
-};
+import { Toggle } from "@/components/ui/toggle";
+import { getProducts } from "@/service/http/product";
+import { Bars4Icon, PlusIcon } from "@heroicons/react/24/outline";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 const AllProduct = () => {
   const [toggle, setToogle] = useState("grid");
 
   const { data: productData, isLoading: isLoadingProduct } = useQuery({
     queryKey: ["product"],
-    queryFn: getProduct,
+    queryFn: getProducts,
   });
 
   return (
@@ -54,24 +47,13 @@ const AllProduct = () => {
               </Button>
             </div>
             <div className="">
-              {/* <label
-                  htmlFor="Toggle3"
-                  className="inline-flex items-center p-2 rounded-md cursor-pointer dark:text-gray-800"
-                >
-                  <input id="Toggle3" type="checkbox" className="hidden peer" />
-                  <span className="px-4 py-2 rounded-l-md dark:bg-picton-blue peer-checked:dark:bg-[#F8FBFF]">
-                    <BoxIcon className="w-5 h-5" />
-                  </span>
-                  <span className="px-4 py-2 rounded-r-md dark:bg-[#F8FBFF] peer-checked:dark:bg-picton-blue">
-                    <Bars4Icon className="w-5 h-5" />
-                  </span>
-                </label> */}
               <button
                 className="px-2 py-2 bg-slate-300 rounded-l-xl"
                 onClick={() => setToogle("grid")}
               >
                 <BoxIcon className="w-5 h-5" />
               </button>
+
               <button
                 className="px-2 py-2 bg-slate-300 rounded-r-xl"
                 onClick={() => setToogle("list")}
@@ -84,14 +66,12 @@ const AllProduct = () => {
         <div className="mx-5 my-5">
           {toggle === "grid" ? (
             <CardProduct
-              data={productData || []}
+              data={productData?.data || []}
               isLoading={isLoadingProduct}
             />
           ) : (
-            <CardListProduct
-              data={productData || []}
-              // isLoading={isLoadingProduct}
-            />
+            //
+            <h2>belum setup</h2>
           )}
         </div>
       </CardBase>

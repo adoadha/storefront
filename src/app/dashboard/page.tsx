@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import { getData } from "@/action/product";
 import Button from "@/components/button/Button";
 import CardBase from "@/components/card/CardBase";
 import DownStatisticsIcon from "@/components/icons/DownStatisticsIcon";
@@ -8,7 +7,6 @@ import FilterIcon from "@/components/icons/FilterIcon";
 import UpStatisticsIcon from "@/components/icons/UpStatisticsIcon";
 
 export default async function Home() {
-  const category = await getData();
   return (
     <div className="w-full ">
       <div className="flex flex-row items-center justify-between my-3">
