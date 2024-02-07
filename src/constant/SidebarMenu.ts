@@ -47,8 +47,8 @@ export const SidebarMenu = [
     active: "dashboard/finance",
     subMenu: [
       {
-        label: "Hutang",
-        path: "dashboard/hutang",
+        label: "Aktivitas Harian",
+        path: "dashboard/finance/hutang",
         icon: PuzzleIcon,
         active: "product",
       },
