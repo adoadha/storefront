@@ -5,13 +5,16 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
+import CardTabsDetail from "@/components/section/dashboard/product/create/CardTabsDetail";
+import CardTabsImage from "@/components/section/dashboard/product/create/CardTabsImage";
+import Link from "next/link";
 
 const CreateProductPage = () => {
   return (
-    <Card className="w-full">
-      <div className="w-full ">
-        <div className="flex flex-col mx-5">
-          <div className="flex justify-between mt-5">
+    <div className="w-full h-full my-5">
+      <Card className="w-full h-full">
+        <div className="flex flex-col h-full mx-5">
+          <div className="flex justify-between mt-5 ">
             <h1 className="text-[25px] font-semibold text-[#163A50]">
               Tambah Produk
             </h1>
@@ -20,63 +23,43 @@ const CreateProductPage = () => {
                 Simpan
               </Button>
               <Separator orientation="vertical" />
-              <XMarkIcon className="w-6 h-6" />
+              <Link href={"dashboard/product/"}>
+                <XMarkIcon className="w-6 h-6" />
+              </Link>
             </div>
           </div>
-          <Separator orientation="horizontal" className="my-5" />
-          <Tabs defaultValue="detail" className="flex gap-x-1">
-            <TabsList className="flex flex-col w-1/4 bg-white rounded-none mt-11 ">
-              <TabsTrigger
-                value="detail"
-                className="px-3 border border-slate-400 text-slate-400 "
-              >
-                Detail Produk
-              </TabsTrigger>
-              <TabsTrigger
-                value="variasi"
-                className="px-3 my-2 border border-slate-400 text-slate-400 "
-              >
-                Variasi
-              </TabsTrigger>
-              <TabsTrigger
-                value="harga"
-                className="border border-slate-400 text-slate-400 "
-              >
-                Harga Produk
-              </TabsTrigger>
-            </TabsList>
-            <Separator orientation="vertical" />
-            <div className="w-full">
-              <TabsContent value="detail">
-                <div className="flex flex-col">
-                  <h1 className="text-[20px] font-semibold text-[#163A50]">
-                    Tambah Produk
-                  </h1>
-                  <div className="flex flex-col">
-                    <div className="flex">
-                      <div className="w-1/2 ">
-                        <h1 className="text-sm">Nama Produk</h1>
-                        <h1 className="my-5 text-sm">Nama Produk</h1>
-                      </div>
-                      <div className="w-full bg-slate-200">
-                        <Input type="email" placeholder="Email" />
-                        <Input
-                          type="ado"
-                          placeholder="Email"
-                          className="my-5"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </TabsContent>
-              <TabsContent value="variasi">ado</TabsContent>
-              <TabsContent value="harga">asas</TabsContent>
+          <Separator orientation="horizontal" className="mt-2" />
+          <Tabs defaultValue="detail" className="w-full h-full">
+            <div className="grid h-full grid-cols-12 gap-1">
+              <div className="col-span-3 border-r border-bg-border">
+                <TabsList className="flex flex-col justify-start h-full mt-5 bg-inherit">
+                  <TabsTrigger
+                    value="detail"
+                    className="border w-[130px] border-slate-400 text-slate-400"
+                  >
+                    Detail Produk
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="gambar"
+                    className="border w-[130px] my-2 border-slate-400 text-slate-400 "
+                  >
+                    Gambar Produk
+                  </TabsTrigger>
+                </TabsList>
+              </div>
+              <div className="col-span-9">
+                <TabsContent value="detail">
+                  <CardTabsDetail />
+                </TabsContent>
+                <TabsContent value="gambar">
+                  <CardTabsImage />
+                </TabsContent>
+              </div>
             </div>
           </Tabs>
         </div>
-      </div>
-    </Card>
+      </Card>
+    </div>
   );
 };
 
