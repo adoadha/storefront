@@ -32,16 +32,16 @@ const CreateProductPage = () => {
           <Tabs defaultValue="detail" className="w-full h-full">
             <div className="grid h-full grid-cols-12 gap-1">
               <div className="col-span-3 border-r border-bg-border">
-                <TabsList className="flex flex-col justify-start h-full mt-5 bg-inherit">
+                <TabsList className="flex flex-col justify-start h-full pr-4 mt-5 bg-inherit">
                   <TabsTrigger
                     value="detail"
-                    className="border w-[130px] border-slate-400 text-slate-400"
+                    className="w-full border border-slate-400 text-slate-400"
                   >
                     Detail Produk
                   </TabsTrigger>
                   <TabsTrigger
                     value="gambar"
-                    className="border w-[130px] my-2 border-slate-400 text-slate-400 "
+                    className="w-full my-2 border border-slate-400 text-slate-400 "
                   >
                     Gambar Produk
                   </TabsTrigger>
