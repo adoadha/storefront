@@ -55,6 +55,12 @@ export const SidebarMenu = [
     ],
   },
   {
+    label: "Pengguna",
+    path: "dashboard/customer",
+    icon: UsersIcon,
+    active: "dashboard/customer",
+  },
+  {
     label: "Laporan",
     path: "dashboard/report",
     icon: UsersIcon,
