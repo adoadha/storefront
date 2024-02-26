@@ -16,19 +16,19 @@ export const SidebarMenu = [
   },
   {
     label: "Product",
-    path: "dashboard/product",
+    path: "/dashboard/product",
     icon: CubeIcon,
     active: "dashboard/product",
     subMenu: [
       {
         label: "Category",
-        path: "dashboard/product/category",
+        path: "/dashboard/product/category",
         icon: PuzzleIcon,
         active: "product",
       },
       {
         label: "Stock",
-        path: "dashboard/product/stock",
+        path: "/dashboard/product/stock",
         icon: PuzzleIcon,
         active: "product",
       },
@@ -36,19 +36,19 @@ export const SidebarMenu = [
   },
   {
     label: "Pesanan",
-    path: "dashboard/pesanan",
+    path: "/dashboard/pesanan",
     icon: ShoppingCartIcon,
     active: "dashboard/pesanan",
   },
   {
     label: "Keuangan",
-    path: "dashboard/finance",
+    path: "/dashboard/finance",
     icon: BanknotesIcon,
     active: "dashboard/finance",
     subMenu: [
       {
         label: "Hutang",
-        path: "dashboard/hutang",
+        path: "/dashboard/hutang",
         icon: PuzzleIcon,
         active: "product",
       },
@@ -56,13 +56,13 @@ export const SidebarMenu = [
   },
   {
     label: "Pengguna",
-    path: "dashboard/customer",
+    path: "/dashboard/customer",
     icon: UsersIcon,
     active: "dashboard/customer",
   },
   {
     label: "Laporan",
-    path: "dashboard/report",
+    path: "/dashboard/report",
     icon: UsersIcon,
     active: "dashboard/report",
   },
