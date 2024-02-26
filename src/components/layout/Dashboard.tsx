@@ -60,7 +60,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                 href={value.path}
                 key={index}
                 className={cn({
-                  "bg-blue-50": pathname.split("/dashboard")[1] == value.active,
+                  "bg-blue-50": pathname === value.path,
                 })}
               >
                 <div className="flex flex-row items-center justify-start p-4 rounded-lg ">
@@ -70,10 +70,16 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                   </span>
                 </div>
               </Link>
-              {pathname.split("/")[1] == "dashboard"
+              {pathname.startsWith(value.path)
                 ? value.subMenu &&
                   value.subMenu.map((subvalue, indexsub) => (
-                    <Link href={subvalue.path} key={indexsub} className="">
+                    <Link
+                      href={subvalue.path}
+                      key={indexsub}
+                      className={cn({
+                        " bg-blue-50": subvalue.path === pathname,
+                      })}
+                    >
                       <div className="flex flex-row items-center justify-start p-4 ml-4 rounded-lg ">
                         <subvalue.icon className="w-5 h-5 " />
                         <span className="ml-4 text-[15px] text-davy-grey">

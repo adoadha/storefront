@@ -81,9 +81,7 @@ const CardTabsImage = () => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-12">
-          <div className=""></div>
-        </div>
+
         <div className="flex flex-col mt-5">
           <div className="flex text-[11px] gap-x-3  text-slate-500">
             <div className="pl-2 w-1/1">Gambar</div>
