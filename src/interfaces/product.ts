@@ -43,5 +43,5 @@ export interface IVariationProduct {
   slash_price?: number;
   variation_stock?: number;
   grosir_price?: number;
-  HPP?: number;
+  hpp?: number;
 }

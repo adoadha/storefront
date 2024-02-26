@@ -29,7 +29,7 @@ export const getProducts = async ({
   queryKey,
 }: QueryFunctionContext): Promise<BaseResponse<IALLProduct[]>> => {
   const [, params] = queryKey;
-  // perbaiki interface dan bedakan karena ini query nya akan di set berbeda
+
   const response = await apiInstance.get("/product", { params });
 
   return response.data;
