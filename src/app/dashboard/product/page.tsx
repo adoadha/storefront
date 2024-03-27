@@ -4,20 +4,19 @@ import CardBase from "@/components/card/CardBase";
 import CardProduct from "@/components/card/CardProduct";
 import InputText from "@/components/form/InputText";
 import BoxIcon from "@/components/icons/BoxIcon";
-import { getProducts } from "@/service/http/product";
-import { Bars4Icon } from "@heroicons/react/24/outline";
-import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { getProducts } from "@/service/http/product";
+import { Bars4Icon } from "@heroicons/react/24/outline";
+import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
+import { useState } from "react";
 
 const AllProduct = () => {
   const [toggle, setToogle] = useState("grid");

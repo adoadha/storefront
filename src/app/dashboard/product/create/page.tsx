@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import CardTabsDetail from "@/components/section/dashboard/product/create/CardTabsDetail";
 import CardTabsImage from "@/components/section/dashboard/product/create/CardTabsImage";
 import Link from "next/link";
+import CardTabsVariation from "@/components/section/dashboard/product/create/CardTabsVariation";
 
 const CreateProductPage = () => {
   return (
@@ -45,6 +46,12 @@ const CreateProductPage = () => {
                   >
                     Gambar Produk
                   </TabsTrigger>
+                  <TabsTrigger
+                    value="variation"
+                    className="w-full my-2 border border-slate-400 text-slate-400 "
+                  >
+                    Variasi
+                  </TabsTrigger>
                 </TabsList>
               </div>
               <div className="col-span-9">
@@ -53,6 +60,9 @@ const CreateProductPage = () => {
                 </TabsContent>
                 <TabsContent value="gambar">
                   <CardTabsImage />
+                </TabsContent>
+                <TabsContent value="variation">
+                  <CardTabsVariation />
                 </TabsContent>
               </div>
             </div>

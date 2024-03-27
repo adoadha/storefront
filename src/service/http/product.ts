@@ -2,7 +2,7 @@ import { BaseResponse } from "@/types";
 import { ICategory } from "@/types/product";
 import { QueryFunctionContext } from "@tanstack/react-query";
 import apiInstance from "./api-instance";
-import { IALLProduct, IProduct } from "@/interfaces/product";
+import { IALLProduct, IProduct, IStock } from "@/interfaces/product";
 
 export const addCategory = async ({
   queryKey,
@@ -45,5 +45,15 @@ export const getProductById = async ({
   );
 
   console.log(response.data, "service response");
+  return response.data;
+};
+
+export const getAllStocks = async ({
+  queryKey,
+}: QueryFunctionContext): Promise<BaseResponse<IStock[]>> => {
+  const [, params] = queryKey;
+
+  const response = await apiInstance.get("/product/stocks", { params });
+
   return response.data;
 };

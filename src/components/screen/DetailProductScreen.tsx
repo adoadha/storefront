@@ -115,62 +115,83 @@ const DetailProductScreen = ({ data, isLoading }: DetailProductScreenProps) => {
 
         <Separator className="px-5" />
         <div className="flex flex-col w-full">
-          <div className="flex w-full mx-5 my-5 gap-x-5">
-            <div className="flex flex-col w-1/4">
-              <Image height="350" width="350" src="/sendal.png" alt="" />
-              <div className="flex gap-3 my-2">
+          <div className="flex my-3 ">
+            <div className="flex flex-col w-1/3">
+              <div className="flex justify-center">
                 <Image
-                  height="75"
-                  width="60"
-                  src="/sendal.png"
+                  height="300"
+                  width="300"
+                  src={data?.thumbnail_images_url}
                   alt=""
-                  className="border rounded-md border-slate-200"
                 />
               </div>
+              <div className="flex gap-3 my-2">
+                {data?.gallery_images.map((value) => (
+                  <Image
+                    key={value.url_product_cloudinary}
+                    height="75"
+                    width="60"
+                    src={value.url_product_cloudinary}
+                    alt=""
+                    className="border rounded-md border-slate-200"
+                  />
+                ))}
+              </div>
             </div>
-            <div className="flex flex-col w-1/2">
+            <div className="flex-1 pr-5">
               <h1 className="text-sm text-slate-400">Harga</h1>
               <h1 className="my-1 text-2xl font-semibold"> Rp 350.000</h1>
-              <Separator />
-              <div className="flex flex-col w-full my-5 ">
-                <div className="flex gap-x-11 ">
-                  <div className="flex flex-col">
-                    <h1 className="text-sm text-slate-400">Kategori</h1>
-                    <h1 className="text-sm">{data?.category_name}</h1>
-                  </div>
-                  <div className="flex flex-col">
-                    <h1 className="text-sm text-slate-400">Tipe Product</h1>
-                    <h1 className="text-sm">Single</h1>
+              <Separator className="w-full" />
+              <div className="flex my-5">
+                <div className="flex-1 ">
+                  <div className="flex flex-col w-full ">
+                    <div className="flex gap-x-11 ">
+                      <div className="flex flex-col">
+                        <h1 className="text-sm text-slate-400">Kategori</h1>
+                        <h1 className="text-sm">{data?.category_name}</h1>
+                      </div>
+                      <div className="flex flex-col">
+                        <h1 className="text-sm text-slate-400">Tipe Produk</h1>
+                        <h1 className="text-sm">{data?.category_name}</h1>
+                      </div>
+                    </div>
+                    <div className="flex flex-col my-3">
+                      <h1 className="text-sm text-slate-400">Description</h1>
+                      <h1 className="text-sm">{data?.description}</h1>
+                    </div>
                   </div>
                 </div>
-
-                <div className="flex flex-col my-3">
-                  <h1 className="text-sm text-slate-400">Description</h1>
-                  <h1 className="text-sm">{data?.description}</h1>
+                <div className="flex justify-end flex-1 ">
+                  <div className="flex flex-col items-center pr-9">
+                    <h1 className="text-sm text-slate-400">Barcode Produk</h1>
+                    <Image
+                      height="120"
+                      width="120"
+                      src={data?.qr_images_url}
+                      alt=""
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="flex mx-2">
-          <Tabs defaultValue="detail" className="w-full">
-            <TabsList className="flex justify-start w-1/3 px-4 gap-x-5">
-              <TabsTrigger value="detail">Detail Produk</TabsTrigger>
-              <TabsTrigger value="variasi">Variasi</TabsTrigger>
+          <Tabs defaultValue="variasi" className="w-full">
+            <TabsList className="flex justify-start px-4 bg-white gap-x-5">
+              <TabsTrigger value="variasi" className="border-b ">
+                Variasi
+              </TabsTrigger>
               <TabsTrigger value="harga">Harga Produk</TabsTrigger>
             </TabsList>
             <div className="w-full">
-              <TabsContent value="detail">
-                Sediain bagian untuk detail product seperti create at, product
-                gallery, qr code
-              </TabsContent>
-              <TabsContent value="variasi" className="w-full px-5 py-5">
+              <TabsContent value="variasi" className="w-full px-5 py-5 ">
                 <TableVariations
                   data={data?.variation_values}
                   isLoading={isLoading}
                 />
               </TabsContent>
-              <TabsContent value="harga" className="w-2/3 px-5 py-5">
+              <TabsContent value="harga" className="w-full px-5 py-5">
                 <TablePrice
                   data={data?.variation_values}
                   isLoading={isLoading}
