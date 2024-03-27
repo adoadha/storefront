@@ -13,6 +13,7 @@ export interface IALLProduct {
   category_name: string;
   created_at: string;
   updated_at: string;
+  thumbnail_images_url: string;
   variation_values: IVariationProduct[];
   total_variations: number;
 }
@@ -28,7 +29,14 @@ export interface IProduct {
   package_height?: number;
   created_at: string;
   updated_at: string;
+  qr_images_url: string;
+  thumbnail_images_url: string;
   variation_values: IVariationProduct[];
+  gallery_images: IGalleryImage[];
+}
+
+export interface IGalleryImage {
+  url_product_cloudinary: string;
 }
 
 export interface IVariationProduct {
@@ -41,7 +49,15 @@ export interface IVariationProduct {
   updated_at: string;
   price: number;
   slash_price?: number;
-  variation_stock?: number;
+  qty: number;
   grosir_price?: number;
   hpp?: number;
+}
+
+export interface IStock {
+  variation_id?: number;
+  variation_name: string;
+  variation_sku: string;
+  price: number;
+  qty: number;
 }

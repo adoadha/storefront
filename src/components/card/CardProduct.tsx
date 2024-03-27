@@ -43,7 +43,7 @@ const CardProduct = ({ data, isLoading }: CardProductProps) => {
       <div className="flex flex-wrap gap-3">
         {data.map((value) => (
           <div
-            className="h-[280px] w-[200px] aspect-square border border-[#DEDEDE]  flex flex-col"
+            className="w-[200px] aspect-square border border-[#DEDEDE]  flex flex-col"
             key={value.product_id}
           >
             <div className="flex items-center justify-between mx-2 my-2">
@@ -55,11 +55,16 @@ const CardProduct = ({ data, isLoading }: CardProductProps) => {
               />
               <EllipsisVerticalIcon className="w-5 h-5" />
             </div>
-            <div className="flex justify-center my-3">
-              <Link href={`/dashboard/product/${value.product_id}`}>
-                <Image height="180" width="150" src="/sendal.png" alt="" />
-              </Link>
-            </div>
+            <Link href={`/dashboard/product/${value.product_id}`}>
+              <div className="relative w-full aspect-square">
+                <Image
+                  fill
+                  src={value.thumbnail_images_url}
+                  alt=""
+                  className="object-contain object-center"
+                />
+              </div>
+            </Link>
             <div className="flex mx-3">
               <h1 className="text-[#163A50] text-[13px] text-left font-semibold line-clamp-1">
                 {value.product_name}

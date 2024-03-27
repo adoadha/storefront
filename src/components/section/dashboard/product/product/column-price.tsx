@@ -4,6 +4,9 @@ import { ColumnDef } from "@tanstack/react-table";
 
 import { DataTableColumnHeader } from "@/components/commons/data-table/data-table-column";
 import { IVariationProduct } from "@/interfaces/product";
+import { currencyFormat } from "@/lib/currency";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 
 const propsColumns = {
   enableSorting: false,
@@ -31,8 +34,8 @@ export const columnPrice: ColumnDef<IVariationProduct>[] = [
     ...propsColumns,
   },
   {
-    id: "HPP",
-    accessorKey: "HPP",
+    id: "hpp",
+    accessorKey: "hpp",
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
@@ -42,6 +45,11 @@ export const columnPrice: ColumnDef<IVariationProduct>[] = [
     ),
     size: 60,
     ...propsColumns,
+    cell: ({ row }) => {
+      const recordValue = row.original || ({} as IVariationProduct);
+
+      return <span>{currencyFormat(recordValue.hpp)}</span>;
+    },
   },
 
   {
@@ -51,11 +59,16 @@ export const columnPrice: ColumnDef<IVariationProduct>[] = [
       <DataTableColumnHeader
         column={column}
         className="uppercase"
-        title="Harga grosir / renceng"
+        title="Harga grosir"
       />
     ),
     size: 60,
     ...propsColumns,
+    cell: ({ row }) => {
+      const recordValue = row.original || ({} as IVariationProduct);
+
+      return <span>{currencyFormat(recordValue.grosir_price)}</span>;
+    },
   },
   {
     id: "price",
@@ -63,11 +76,49 @@ export const columnPrice: ColumnDef<IVariationProduct>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title="Harga"
+        title="Harga Normal"
         className="uppercase"
       />
     ),
     size: 60,
     ...propsColumns,
+    cell: ({ row }) => {
+      const recordValue = row.original || ({} as IVariationProduct);
+
+      return <span>{currencyFormat(recordValue.price)}</span>;
+    },
+  },
+  {
+    id: "slash_price",
+    accessorKey: "slash_price",
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title="Harga Diskon"
+        className="uppercase"
+      />
+    ),
+    size: 60,
+    ...propsColumns,
+    cell: ({ row }) => {
+      const recordValue = row.original || ({} as IVariationProduct);
+
+      return (
+        <div className="">
+          {recordValue.slash_price === null ? (
+            <Badge variant="destructive" className="rounded-md">
+              Tidak sedang diskon
+            </Badge>
+          ) : (
+            <div className="flex items-center gap-x-2">
+              <span>{currencyFormat(recordValue.slash_price)}</span>|
+              <Badge variant="success" className="rounded-md">
+                Diskon berjalan
+              </Badge>
+            </div>
+          )}
+        </div>
+      );
+    },
   },
 ];

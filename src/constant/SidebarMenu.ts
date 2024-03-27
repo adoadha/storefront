@@ -1,9 +1,12 @@
 import PuzzleIcon from "@/components/icons/PuzzleIcon";
 import {
   BanknotesIcon,
+  CircleStackIcon,
   Cog8ToothIcon,
   CubeIcon,
+  HomeIcon,
   ShoppingCartIcon,
+  TagIcon,
   UsersIcon,
 } from "@heroicons/react/24/outline";
 
@@ -11,25 +14,25 @@ export const SidebarMenu = [
   {
     label: "Dashboard",
     path: "/dashboard",
-    icon: PuzzleIcon,
+    icon: HomeIcon,
     active: "dashboard",
   },
   {
-    label: "Product",
+    label: "Produk",
     path: "/dashboard/product",
     icon: CubeIcon,
     active: "dashboard/product",
     subMenu: [
       {
-        label: "Category",
+        label: "Kategori",
         path: "/dashboard/product/category",
-        icon: PuzzleIcon,
+        icon: TagIcon,
         active: "product",
       },
       {
         label: "Stock",
         path: "/dashboard/product/stock",
-        icon: PuzzleIcon,
+        icon: CircleStackIcon,
         active: "product",
       },
     ],
